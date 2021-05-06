@@ -1,11 +1,29 @@
 // Go to this URL and register https://openweathermap.org/appid
-// Get your API KEY (appid)
+// Get your API KEY (appId)
 
 const APIKey = "62e54303a7d54e5faad6eef0a03675e2";
 const baseUrl = "https://api.weatherbit.io/v2.0/current?";
+//const country_code = "ES";
 
 // https://api.weatherbit.io/v2.0/current?lat=41.41&lon=2.19&key=62e54303a7d54e5faad6eef0a03675e2
 //const URL = `${baseUrl}lat=${latitude}&lon=${longitude}&key=${APIKey}`;
+
+//Input and Event Listener
+const inputBox = document.querySelector(".input_box");
+const btn = document.querySelector("#btn");
+let city = inputBox.value;
+
+btn.addEventListener("click", function () {
+  city = inputBox.value.trim().toLowerCase();
+  console.log(city);
+});
+
+function setEvent(event) {
+  if (event.key) {
+    callWeatherAPIPosition(inputBox.value);
+    console.log(inputBox.value);
+  }
+}
 
 const callWeatherAPIPosition = (longitude, latitude) => {
   const URL = `${baseUrl}lat=${latitude}&lon=${longitude}&key=${APIKey}`;
@@ -17,7 +35,10 @@ const callWeatherAPIPosition = (longitude, latitude) => {
       showWeatherInfo(weather_info.data[0]);
     });
   //if the call goes wrong || 403, 404...;
-  callFetchURL.catch((error) => console.error("Something went wrong", error));
+  callFetchURL.catch((error) => {
+    console.error("Something went wrong", error);
+    return alert(`An error occured, ${error}`);
+  });
 };
 
 const onPositionReceived = (position) => {
