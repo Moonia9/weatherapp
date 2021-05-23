@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Weather Application</title>
-    <link rel="stylesheet" href="font/Rimouski.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-    <div class="container">
-        <div class="app-title">
-            <p>Weather</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title class = "app-title">Weather Application Project</title>
+  </head>
+  <body>
+    <div class="app-info">
+      <header>
+        <input
+          type="text"
+          onkeydown="filterCities()"
+          autocomplete="off"
+          class="input-box"
+          id="search"
+          placeholder="Search your city..."
+        />
+        <ul class="data-box"></ul>
+      </header>
+      <main>
+        <section class="location">
+          <div class="city-name">Barcelona</div>
+          <div class="current-date"></div>
+        </section>
+        <div class="current">
+          <div class="temperature">22<span>°C</span></div>
+          <div class="weather-info">Sunny</div>
         </div>
-        <!-- Adding the input search field -->
-        <header>
-            <input type = "text" autocomplete="off" class ="input_box" placeholder = "Search your city..."> <button
-            id="btn"
-            type="button"
-            class="btn btn-outline-secondary bg-light mr-2"
-          >
-            Search
-          </button>
-        </input>
-        </header>
-        <div class="notification"> </div>
-        <div class="weather-container">
-            <div class="weather-icon">
-                <img src="icons/unknown.png" alt="">
-            </div>
-            <div class="temperature-value">
-                <p>- °<span>C</span></p>
-            </div>
-            <div class="temperature-description">
-                <p> - </p>
-            </div>
-            <div class="location">
-                <p>-</p>
-            </div>
-        </div>
+      </main>
     </div>
-    
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
-
-
